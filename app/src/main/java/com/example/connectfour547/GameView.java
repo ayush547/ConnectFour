@@ -27,12 +27,13 @@ public class GameView extends View {
         return rows;
     }
 
-    public void setCols(int cols) {
+    public void setSize(int rows,int cols) {
         this.cols = cols;
-    }
-
-    public void setRows(int rows) {
         this.rows = rows;
+        board = null;
+        board = new Board(rows,cols);
+        invalidate();
+        requestLayout();
     }
 
     public GameView(Context context, AttributeSet attrs) {

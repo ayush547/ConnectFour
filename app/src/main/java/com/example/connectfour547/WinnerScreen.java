@@ -23,7 +23,10 @@ public class WinnerScreen extends Activity {
     }
 
     public void restart(View view){
-        Intent restart = new Intent(this,MainActivity.class);  //here
+        Intent restart = new Intent(this,MainActivity.class);
+        Intent in = getIntent();
+        restart.putExtra("rows",in.getIntExtra("rows",6));
+        restart.putExtra("cols",in.getIntExtra("cols",7));
         startActivity(restart);
         finish();
     }

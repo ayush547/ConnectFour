@@ -2,6 +2,7 @@ package com.example.connectfour547;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,6 +16,7 @@ public class MainActivity extends Activity {
     GameView gameView;
     ImageView playerTurn;
     int rows,cols;
+    MediaPlayer playSound,undoSound,resetSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,9 @@ public class MainActivity extends Activity {
         }
         else board = new Board(gameView.getRows(),gameView.getCols());
         playerTurn = findViewById(R.id.playerTurn);
+        playSound = MediaPlayer.create(this,R.raw.play);
+        undoSound = MediaPlayer.create(this,R.raw.undo);
+        resetSound = MediaPlayer.create(this,R.raw.reset);
     }
 
     @Override
@@ -42,7 +47,10 @@ public class MainActivity extends Activity {
             case MotionEvent.ACTION_UP:
                 gameView.setX(x);
                 if(board.play(gameView.getPlayed())!=-1)
+                {
                     gameView.boardDraw(board);
+                    playSound.start();
+                }
                 if(board.getTurn()==1)playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.red));
                 else playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.yellow));
                 break;
@@ -64,11 +72,13 @@ public class MainActivity extends Activity {
     }
 
     public void reset(View view) {
+        resetSound.start();
         board.reset();
         gameView.boardDraw(board);
     }
 
     public void undo(View view) {
+        undoSound.start();
         board.undo();
         gameView.boardDraw(board);
     }

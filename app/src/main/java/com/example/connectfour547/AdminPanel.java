@@ -2,6 +2,7 @@ package com.example.connectfour547;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,14 +11,17 @@ import android.widget.TextView;
 public class AdminPanel extends Activity {
 
     int rows,cols;
+    MediaPlayer buttonSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
+        buttonSound = MediaPlayer.create(this,R.raw.button);
     }
 
     public void save(View view) {
+        buttonSound.start();
         EditText editText1,editText2;
         TextView textView = findViewById(R.id.check);
         editText1 = findViewById(R.id.editText);

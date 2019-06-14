@@ -28,7 +28,7 @@ public class AdminPanel extends Activity {
         if(rows<3||rows>10||cols<3||cols>10) textView.setText("Invalid");
         else
         {
-            Intent out = new Intent(this,MainActivity.class);
+            Intent out = new Intent(this,MainActivity.class);  //here
             out.putExtra("rows",rows);
             out.putExtra("cols",cols);
             startActivity(out);

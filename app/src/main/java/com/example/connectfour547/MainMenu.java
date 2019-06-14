@@ -15,7 +15,7 @@ public class MainMenu extends Activity {
         setContentView(R.layout.activity_main_menu);
     }
 
-    public void singlePlayer(View view) {
+    public void singlePlayer(View view) {  //here
     }
 
     public void doublePlayer(View view) {

@@ -23,7 +23,7 @@ public class WinnerScreen extends Activity {
     }
 
     public void restart(View view){
-        Intent restart = new Intent(this,MainActivity.class);
+        Intent restart = new Intent(this,MainActivity.class);  //here
         startActivity(restart);
         finish();
     }

@@ -20,7 +20,7 @@ public class AdminPanel extends Activity {
         buttonSound = MediaPlayer.create(this,R.raw.button);
     }
 
-    public void save(View view) {
+    public void save(int i) {
         buttonSound.start();
         EditText editText1,editText2;
         TextView textView = findViewById(R.id.check);
@@ -32,11 +32,25 @@ public class AdminPanel extends Activity {
         if(rows<3||rows>10||cols<3||cols>10) textView.setText("Invalid");
         else
         {
-            Intent out = new Intent(this,MainActivity.class);  //here
-            out.putExtra("rows",rows);
-            out.putExtra("cols",cols);
-            startActivity(out);
+            Intent outDouble = new Intent(this,MainActivity.class);
+            outDouble.putExtra("rows",rows);
+            outDouble.putExtra("cols",cols);
+            Intent outSingle = new Intent(this,SinglePlayer.class);
+            outSingle.putExtra("rows",rows);
+            outSingle.putExtra("cols",cols);
+            if(i==1)
+                startActivity(outSingle);
+            else
+                startActivity(outDouble);
             finish();
         }
+    }
+
+    public void doubleStart(View view) {
+        save(2);
+    }
+
+    public void singleStart(View view) {
+        save(1);
     }
 }

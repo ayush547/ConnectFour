@@ -18,8 +18,12 @@ public class MainMenu extends Activity {
         buttonSound = MediaPlayer.create(this,R.raw.button);
     }
 
-    public void singlePlayer(View view) {  //here
+    public void singlePlayer(View view) {
         buttonSound.start();
+        out = new Intent(this,SinglePlayer.class);
+        startActivity(out);
+        finish();
+
     }
 
     public void doublePlayer(View view) {

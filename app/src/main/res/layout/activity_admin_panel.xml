@@ -53,10 +53,18 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="Single Player Mode"
         android:layout_below="@id/editText2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:onClick="save"/>
+        android:id="@+id/button"
+        android:layout_marginTop="32dp"
+        android:onClick="singleStart"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Double Player mode"
+        android:onClick="doubleStart"
+        android:layout_below="@id/button"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

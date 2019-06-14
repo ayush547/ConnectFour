@@ -8,8 +8,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends Activity {
+//-1 for player -1 for comp
+public class SinglePlayer extends Activity {
 
     Board board;
     GameView gameView;
@@ -20,7 +22,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_single_player);
         gameView = findViewById(R.id.gameView);
         Intent in = getIntent();
         rows = in.getIntExtra("rows",0);
@@ -34,6 +36,19 @@ public class MainActivity extends Activity {
         playSound = MediaPlayer.create(this,R.raw.play);
         undoSound = MediaPlayer.create(this,R.raw.undo);
         resetSound = MediaPlayer.create(this,R.raw.reset);
+    }
+
+    private void exitToWin(int winner) {
+        Intent exitToWin = new Intent(this,WinnerScreen.class);
+        exitToWin.putExtra("winner",winner);
+        exitToWin.putExtra("mode",2);
+        if(rows*cols!=0)
+        {
+            exitToWin.putExtra("rows",rows);
+            exitToWin.putExtra("cols",cols);
+        }
+        startActivity(exitToWin);
+        finish();
     }
 
     @Override
@@ -50,24 +65,15 @@ public class MainActivity extends Activity {
                     gameView.boardDraw(board);
                     playSound.start();
                 }
-                if(board.getTurn()==1)playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.red));
-                else playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.yellow));
+                playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.yellow));
+                board.play(board.ai());
+                gameView.boardDraw(board);
+                playSound.start();
+                playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.red));
                 break;
         }
-        if(board.check()!=2)exitToWin(board.check());
+        if(board.check()!=2)exitToWin(board.check()*5);
         return super.onTouchEvent(event);
-    }
-
-    private void exitToWin(int winner) {
-        Intent exitToWin = new Intent(this,WinnerScreen.class);
-        exitToWin.putExtra("winner",winner);
-        if(rows*cols!=0)
-        {
-            exitToWin.putExtra("rows",rows);
-            exitToWin.putExtra("cols",cols);
-        }
-        startActivity(exitToWin);
-        finish();
     }
 
     public void reset(View view) {

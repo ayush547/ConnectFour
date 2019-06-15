@@ -74,6 +74,7 @@ public class MainActivity extends Activity {
         resetSound.start();
         board.reset();
         gameView.boardDraw(board);
+        playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.red));
     }
 
     public void undo(View view) {

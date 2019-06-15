@@ -1,7 +1,6 @@
 package com.example.connectfour547;
 
 import java.util.Arrays;
-import java.util.Random;
 import java.util.Vector;
 
 public class Board {
@@ -126,10 +125,5 @@ public class Board {
             lastPlayedX.remove(lastPlayedX.size() - 1);
             lastPlayedY.remove(lastPlayedY.size() - 1);
         }
-    }
-
-    public int ai() {
-        Random random = new Random();
-        return random.nextInt(cols);
     }
 }

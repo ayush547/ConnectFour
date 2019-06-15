@@ -66,7 +66,8 @@ public class SinglePlayer extends Activity {
                     playSound.start();
                 }
                 playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.yellow));
-                board.play(board.ai());
+                AI computer = new AI(board);
+                board.play(computer.getmove());
                 gameView.boardDraw(board);
                 playSound.start();
                 playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.red));
@@ -84,7 +85,8 @@ public class SinglePlayer extends Activity {
 
     public void undo(View view) {
         undoSound.start();
-        board.undo();
+        board.undo();  //undo comp move
+        board.undo();  //undo player move
         gameView.boardDraw(board);
     }
 }

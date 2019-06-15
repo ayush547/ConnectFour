@@ -117,6 +117,7 @@ public class Board {
     public void reset() {
         for(int i=0;i<rows;i++)
             Arrays.fill(board[i],0);
+        turn=1;
     }
 
     public void undo() {
@@ -124,6 +125,7 @@ public class Board {
             board[(int) lastPlayedX.lastElement()][(int) lastPlayedY.lastElement()] = 0;
             lastPlayedX.remove(lastPlayedX.size() - 1);
             lastPlayedY.remove(lastPlayedY.size() - 1);
+            flipTurn();
         }
     }
 }

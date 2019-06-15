@@ -80,5 +80,7 @@ public class MainActivity extends Activity {
         undoSound.start();
         board.undo();
         gameView.boardDraw(board);
+        if(board.getTurn()==1)playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.red));
+        else playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.yellow));
     }
 }

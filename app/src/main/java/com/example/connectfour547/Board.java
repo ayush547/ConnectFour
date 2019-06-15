@@ -118,8 +118,8 @@ public class Board {
         for(int i=0;i<rows;i++)
             Arrays.fill(board[i],0);
         turn=1;
-        lastPlayedY = null;
-        lastPlayedY = null;
+        lastPlayedY.clear();
+        lastPlayedY.clear();
     }
 
     public void undo() {

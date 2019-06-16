@@ -19,6 +19,6 @@ public class SplashScreen extends Activity {
                 startActivity(mainIntent);
                 finish();
             }
-        },60); //6400 works well with given gif
+        },6400); //6400 works well with given gif
     }
 }

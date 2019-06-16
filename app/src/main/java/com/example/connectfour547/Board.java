@@ -31,11 +31,20 @@ public class Board {
             Arrays.fill(board[i],0);
     }
 
-    private void flipTurn(){
+    public Board(Board naya){  //Copy constructor
+        board = naya.board;
+        rows = naya.rows;
+        cols = naya.cols;
+        lastPlayedX = naya.lastPlayedX;
+        lastPlayedY = naya.lastPlayedY;
+        turn = naya.turn;
+    }
+
+    public void flipTurn(){
         turn*=-1;
     }
 
-    public int play(int col){
+    public int play(int col){  //returns -1 for invalid move otherwise returns row played in
         int i=rows-1;
         while(i!=-1&&board[i][col]!=0)i--;
         if(i!=-1) {
@@ -129,5 +138,9 @@ public class Board {
             lastPlayedY.remove(lastPlayedY.size() - 1);
             flipTurn();
         }
+    }
+
+    public int[][] entireBoard() {
+        return board;
     }
 }

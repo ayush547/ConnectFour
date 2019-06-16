@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-import java.util.concurrent.TimeUnit;
 
 //-1 for player -1 for comp
 public class SinglePlayer extends Activity {
@@ -67,7 +66,7 @@ public class SinglePlayer extends Activity {
                 }
                 playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.yellow));
                 AI computer = new AI(board);
-                board.play(computer.getmove());
+                board.play(computer.getMove());
                 gameView.boardDraw(board);
                 playSound.start();
                 playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.red));

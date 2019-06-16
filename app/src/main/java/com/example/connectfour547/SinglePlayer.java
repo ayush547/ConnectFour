@@ -63,13 +63,13 @@ public class SinglePlayer extends Activity {
                 {
                     gameView.boardDraw(board);
                     playSound.start();
+                    playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.yellow));
+                    AI computer = new AI(board);
+                    board.play(computer.getMove());
+                    gameView.boardDraw(board);
+                    playSound.start();
+                    playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.red));
                 }
-                playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.yellow));
-                AI computer = new AI(board);
-                board.play(computer.getMove());
-                gameView.boardDraw(board);
-                playSound.start();
-                playerTurn.setImageDrawable(getResources().getDrawable(R.drawable.red));
                 break;
         }
         if(board.check()!=2)exitToWin(board.check()*5);
